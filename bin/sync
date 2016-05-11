@@ -1,0 +1,19 @@
+#!/usr/local/bin/bash
+
+declare -A FILES
+
+FILES[1]=".bash_profile"
+FILES[2]=".gitconfig"
+FILES[3]=".gitignore"
+FILES[4]=".git-completion.bash"
+FILES[5]=".hushlogin"
+
+if [[ $# == 1 && $1 == "--install" ]]; then
+	for f in ${FILES[@]}; do
+		cp ../src/$f ~/$f
+	done
+else
+	for f in ${FILES[@]}; do
+		cp ~/$f ../src/$f
+	done
+fi
